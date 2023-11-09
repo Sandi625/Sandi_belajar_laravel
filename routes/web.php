@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,12 @@ Route::get('/', function () {
 Route::get('/hello', [HomeController::class,'abc'])->name('home');
 
 Route::get('/biodata', [HomeController::class,'biodata'])->name('home');
+
+Route::get('/admin', [adminController::class,'admin'])->name('admin');
+
+Route::get('/anime', [adminController::class, 'anime'])->name('anime');
+
+
+
+
+
