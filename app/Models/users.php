@@ -15,6 +15,10 @@ class users extends Model
         'phone_number',
         'username',
         'password',
-
+        'last_login_at',
+        'created_by',
+        'updated_by',
+        'group_id',
+        'is_active',
     ];
 }

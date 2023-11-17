@@ -11,8 +11,20 @@ class Products extends Model
 
 
     protected $guarded = [];
-    protected $dates = ['created_at'];
-    protected $fillable =['id','product_name','category_id','product_code','is_active','created_at','updated_at','description','price','unit','discount_amount','stock','image'];
+    protected $fillable = [
+        'product_name',
+        'category_id',
+        'product_code',
+        'is_active',
+        'created_by',
+        'updated_by',
+        'description',
+        'price',
+        'unit',
+        'discount_amount',
+        'stock',
+        'image',
+    ];
 
     public function product_categories(){
         return $this->belongsTo(Product_categories::class, 'category_id');
