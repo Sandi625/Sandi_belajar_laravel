@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->unsignedBigInteger('category_id'); // Use unsignedBigInteger for foreign keys
+            $table->unsignedBigInteger('category_id');
             $table->string('product_code');
             $table->enum('is_active', ['1', '0']);
-            $table->timestamps(); // This line creates 'created_at' and 'updated_at' columns
-            $table->unsignedBigInteger('created_by')->nullable(); // Use unsignedBigInteger for foreign keys
-            $table->unsignedBigInteger('updated_by')->nullable(); // Use unsignedBigInteger for foreign keys
+            $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
             $table->text('description');
             $table->decimal('price', 15, 2);
             $table->string('unit');

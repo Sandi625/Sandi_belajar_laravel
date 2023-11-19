@@ -16,9 +16,9 @@ return new class extends Migration
             $table->integer('sales_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
-            $table->timestamps(); // This line creates 'created_at' and 'updated_at' columns
-            $table->unsignedBigInteger('created_by'); // Use unsignedBigInteger for user IDs
-            $table->unsignedBigInteger('updated_by'); // Use unsignedBigInteger for user IDs
+            $table->timestamps();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
             $table->decimal('amount_total', 15, 2);
 
 

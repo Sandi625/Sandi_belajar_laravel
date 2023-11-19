@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->timestamp('last_login_at')->nullable();
-            $table->timestamps(); // This line creates 'created_at' and 'updated_at' columns
-            $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('updated_by');
-            $table->unsignedBigInteger('group_id');
-            $table->enum('is_active', ['1', '0']);
+            $table->timestamps();
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->rememberToken();
+            $table->enum('is_active', ['1', '0'])->nullable();
         });
 
     }

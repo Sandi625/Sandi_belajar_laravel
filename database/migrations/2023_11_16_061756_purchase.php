@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('sub_amount', 15, 2);
             $table->decimal('amount_total', 15, 2);
             $table->decimal('discount_amount', 15, 2);
-            $table->timestamps(); // This line creates 'created_at' and 'updated_at' columns
+            $table->timestamps();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->integer('total_products');

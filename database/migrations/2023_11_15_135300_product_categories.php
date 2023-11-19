@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('category_name');
-            $table->timestamps(); // This line creates 'created_at' and 'updated_at' columns
-            $table->unsignedBigInteger('created_by'); // Use unsignedBigInteger for user IDs
-            $table->unsignedBigInteger('updated_by'); // Use unsignedBigInteger for user IDs
-            $table->enum('is_active', ['1', '0']); // Ensure enum definition is correct
+            $table->timestamps();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->enum('is_active', ['1', '0']);
 
 
 

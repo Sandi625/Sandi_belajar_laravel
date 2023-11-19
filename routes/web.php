@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SessionController;
 use App\Models\Products;
 use Illuminate\Support\Facades\Artisan;
 
@@ -23,21 +24,21 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('welcome');
+})->middleware('auth');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
+
+// require __DIR__.'/auth.php';
 
 
 Route::get('/home', [HomeController::class,'index'])->name('index');
@@ -72,25 +73,31 @@ Route::get('/delete/{id}', [EmployeeController::class, 'delete'])->name('delete'
 
 
 
-Route::get('/produk', [ProductsController::class, 'products'])->name('products');
+Route::get('/produk', [ProductsController::class, 'products'])->name('products')->middleware('auth');
 
-Route::get('/tambahproduk', [ProductsController::class, 'tambahproduk'])->name('tambahproduk');
+Route::get('/tambahproduk', [ProductsController::class, 'tambahproduk'])->name('tambahproduk')->middleware('auth');
 
 Route::post('/insertproduk', [ProductsController::class, 'insertproduk'])->name('insertproduk');
 
-Route::get('/tampilproduk/{id}', [ProductsController::class, 'tampilproduk'])->name('tampilproduk');
+Route::get('/tampilproduk/{id}', [ProductsController::class, 'tampilproduk'])->name('tampilproduk')->middleware('auth');
 
 Route::post('/updateproduk/{id}', [ProductsController::class, 'updateproduk'])->name('updateproduk');
 
-Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk'])->name('deleteproduk');
+Route::get('/deleteproduk/{id}', [ProductsController::class, 'deleteproduk'])->name('deleteproduk')->middleware('auth');
 
 
-Route::get('/pencarian', [ProductsController::class, 'cari'])->name('cari');
-
-
+Route::get('/pencarian', [ProductsController::class, 'cari'])->name('cari')->middleware('auth');
 
 
 
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::get('/home', [HomeController::class,''])->name('home');
-// });
+Route::get('/login',[LoginController::class, 'login'])->name('login');
+Route::post('/loginproses',[LoginController::class, 'loginproses'])->name('loginproses');
+
+Route::get('/register',[loginController::class, 'register'])->name('register');
+Route::post('/registeruser',[loginController::class, 'registeruser'])->name('registeruser');
+
+Route::get('/logout',[loginController::class, 'logout'])->name('logout');
+
+//  Route::group(['middleware' => ['auth']], function () {
+//      Route::get('/home', [HomeController::class,''])->name('home');
+//  });

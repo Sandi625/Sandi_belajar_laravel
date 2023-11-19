@@ -19,10 +19,10 @@ return new class extends Migration
             $table->integer('out');
             $table->integer('product_id');
             $table->integer('remaining_stock');
-            $table->timestamp('updated_at')->useCurrent(); // Use useCurrent() to set default to current timestamp
+            $table->timestamp('updated_at')->useCurrent();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
-            $table->timestamp('created_at')->useCurrent(); // Use useCurrent() to set default to current timestamp
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 
