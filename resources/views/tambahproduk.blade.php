@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    @include('layouts.pesan')
     <h1 class="text-center mb-4">Tambah data produk</h1>
 
     <div class="container">

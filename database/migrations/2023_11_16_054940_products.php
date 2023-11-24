@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('unit');
             $table->decimal('discount_amount', 15, 2);
             $table->integer('stock');
-            $table->text('image');
+            $table->text('image')->nullable();
 
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('restrict')->onUpdate('cascade');
         });
