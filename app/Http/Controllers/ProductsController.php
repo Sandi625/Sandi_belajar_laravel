@@ -98,7 +98,7 @@ class ProductsController extends Controller
             'unit.required'=>'Unit wajib di isi',
             'stock.required'=>'Stok Produk wajib di isi',
 
-            // Tambahkan pesan error untuk aturan validasi lainnya jika diperlukan
+
         ]);
 
         if ($validator->fails()) {
