@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\loginController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SessionController;
 use App\Models\Products;
 use Illuminate\Support\Facades\Artisan;
+
+use App\Http\Controllers\DasborController;
 
 
 /*
@@ -24,9 +27,15 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('welcome');
-})->middleware('auth');
+// Route::get('/dashboard', function () {
+//     return view('welcome');
+// })->middleware('auth');
+
+Route::get('/dashboard', [DasborController::class, 'tampilkanDasbor'])->middleware('auth');
+
+// Route::get('/dabor', [DasborController::class, 'tampilkanDasbor'])->middleware('auth');
+
+Route::get('/',[LoginController::class, 'login'])->name('login');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -98,6 +107,18 @@ Route::post('/registeruser',[loginController::class, 'registeruser'])->name('reg
 
 Route::get('/logout',[loginController::class, 'logout'])->name('logout');
 
+Route::get('/charts',[ChartController::class, 'chart'])->name('chart')->middleware('auth');
+
 //  Route::group(['middleware' => ['auth']], function () {
 //      Route::get('/home', [HomeController::class,''])->name('home');
 //  });
+
+
+
+
+
+
+
+
+
+
