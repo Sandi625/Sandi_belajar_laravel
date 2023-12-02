@@ -109,6 +109,16 @@ Route::get('/logout',[loginController::class, 'logout'])->name('logout');
 
 Route::get('/charts',[ChartController::class, 'chart'])->name('chart')->middleware('auth');
 
+
+
+
+
+
+
+
+
+
+
 //  Route::group(['middleware' => ['auth']], function () {
 //      Route::get('/home', [HomeController::class,''])->name('home');
 //  });

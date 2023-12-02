@@ -27,7 +27,6 @@ class ChartController extends Controller
             $totalPricePerCategory[$category->category_name] = Products::where('category_id', $category->id)->sum('price');
             $stockPerCategory[$category->category_name] = Products::where('category_id', $category->id)->sum('stock');
         }
-
         return view('highchart', [
             'productsPerCategory' => $productsPerCategory,
             'totalPricePerCategory' => $totalPricePerCategory,
